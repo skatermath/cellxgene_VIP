@@ -2145,27 +2145,15 @@ function getGSEA(){
         url: VIPurl,
         data:JSON.stringify({'method':"GSEAgs",'dataset': window.store.getState().config.displayNames.dataset+'.h5ad'}),
         contentType: 'application/json;charset=UTF-8',
-        /* success: function(res){
+        success: function(res){
           if(res.length==0) return;
           resD = JSON.parse(res);
           for(const one of resD){
             $('#GSEAgs').append(createOpt(one));
             $('#preDEGfgseaGS').append(createOpt(one));
           }
-        }, */
-        success: function(res) {
-          console.log(res);  // Check raw response
-          if(res.length == 0) return;
-          resD = JSON.parse(res);
-          console.log(resD);  // Check parsed data
-          
-          for (const one of resD) {
-              console.log('Adding option:', one);
-              $('#GSEAgs').append(createOpt(one));
-              $('#preDEGfgseaGS').append(createOpt(one));
-          }
         },
-
+        
         error: function(request,status,error){
           console.log(request.status+': cannot get gsea information ...');
         }
